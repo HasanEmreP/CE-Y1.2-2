@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <time.h>
+
+// Hasan Emre Persilioğlu
+// 190202009
+
+int nilpotent(int boyut,int matris[boyut][boyut])
+{
+    int temp=0;
+    for(int i=0; i<boyut; i++)
+    {
+        for(int j=0; j<boyut; j++)
+        {
+            for(int x=0; x<boyut; x++)
+            {
+                temp=temp+matris[i][x]*matris[x][j];
+            }
+        }
+    }
+
+       if(temp!=0) return 0;
+       else return 1;
+}
+
+int main()
+{
+    srand(time(NULL));
+    int boyut;
+    printf("Kare Matrisin Boyunu giriniz:\n");
+    scanf("%d",&boyut);
+    int matris[boyut][boyut];
+
+    for(int i=0; i<boyut; i++)
+    {
+        for(int j=0; j<boyut; j++)
+        {
+            matris[i][j]=(rand()%21)-10;
+        }
+    }
+
+    for(int i=0; i<boyut; i++)
+    {
+        for(int j=0; j<boyut; j++)
+        {
+            printf("%d\t",matris[i][j]);
+        }
+        printf("\n");
+    }
+
+   if( nilpotent(boyut,matris)==0)
+
+   printf("nilpotent degil");
+   else printf("nilpotent");
+
+}
